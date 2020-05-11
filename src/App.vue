@@ -9,15 +9,26 @@
       <router-link to="/about/editor">editor</router-link>
     </div>
     <router-view />
+    <Menu></Menu>
   </div>
 </template>
 
+<script>
+import Menu from "@/components/Menu";
+
+export default {
+  name: "App",
+  components: {
+    Menu
+  }
+};
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
 }
 </style>

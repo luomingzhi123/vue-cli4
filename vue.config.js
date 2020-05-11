@@ -9,7 +9,8 @@ function resolve(dir) {
 module.exports = {
   publicPath: "/call",
   devServer: {
-    port
+    port,
+    open: true
   },
   configureWebpack: {
     name: title

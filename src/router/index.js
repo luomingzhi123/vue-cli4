@@ -36,11 +36,11 @@ export const asyncRoutes = [
     redirect: "/about/index",
     children: [
       {
-        path: "index",
+        path: "/about/index",
         component: () => import("@/views/About.vue"),
         name: "about",
         meta: {
-          title: "about",
+          title: "about1",
           icon: "gender",
           roles: ["admin"]
         }
@@ -50,10 +50,44 @@ export const asyncRoutes = [
         component: () => import("@/views/Editor.vue"),
         name: "editor",
         meta: {
-          title: "about",
+          title: "about2",
           icon: "gender",
           roles: ["editor"]
-        }
+        },
+        children: [
+          {
+            path: "/editor/editor2",
+            component: () => import("@/views/Editor.vue"),
+            name: "editor2",
+            meta: {
+              title: "about2-1",
+              icon: "gender",
+              roles: ["editor"]
+            },
+            children: [
+              {
+                path: "/editor/editor2/index",
+                component: () => import("@/views/About.vue"),
+                name: "about5",
+                meta: {
+                  title: "editor 2-1-1",
+                  icon: "gender",
+                  roles: ["admin"]
+                }
+              },
+              {
+                path: "/editor/editor2/index2",
+                component: () => import("@/views/About.vue"),
+                name: "about6",
+                meta: {
+                  title: "editor 2-1-2",
+                  icon: "gender",
+                  roles: ["admin"]
+                }
+              },
+            ]
+          }
+        ]
       }
     ]
   }
