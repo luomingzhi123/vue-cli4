@@ -1,4 +1,5 @@
 const path = require("path");
+const bodyParser = require("body-parser");
 const port = 8001;
 const title = "项目实践";
 
@@ -10,7 +11,48 @@ module.exports = {
   publicPath: "/call",
   devServer: {
     port,
-    open: true
+    open: true,
+    proxy: {
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://192.168.31.215:8001/`,
+        changeOrigin: true,
+        pathRewrite: {
+          ["^" + process.env.VUE_APP_BASE_API]: ""
+        }
+      }
+    },
+    before: app => {
+      app.use(bodyParser.json());
+      app.use(
+        bodyParser.urlencoded({
+          extended: true
+        })
+      );
+
+      app.post("/api/user/login", (req, res) => {
+        const { username } = req.body;
+
+        if (username === "admin" || username === "jerry") {
+          res.json({
+            code: 1,
+            data: username
+          });
+        } else {
+          res.json({
+            code: 10204,
+            message: "用户名或密码错误"
+          });
+        }
+      });
+
+      app.get("/api/user/info", (req, res) => {
+        const roles = req.headers["token"] === "admin" ? ["admin"] : ["editor"];
+        res.json({
+          code: 1,
+          data: roles
+        });
+      });
+    }
   },
   configureWebpack: {
     name: title

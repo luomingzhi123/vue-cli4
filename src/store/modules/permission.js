@@ -27,7 +27,7 @@ export function filterAsyncRoutes(routes, roles) {
     if (hasPermission(roles, tmp)) {
       if (tmp.children) {
         tmp.children = filterAsyncRoutes(tmp.children, roles);
-        console.log(tmp.children)
+        console.log(tmp.children);
       }
       res.push(tmp);
     }

@@ -84,7 +84,7 @@ export const asyncRoutes = [
                   icon: "gender",
                   roles: ["admin"]
                 }
-              },
+              }
             ]
           }
         ]
