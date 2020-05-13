@@ -24,9 +24,6 @@ export default {
           this.$router.push({
             path: this.$route.query.redirect || "/"
           });
-        })
-        .catch(err => {
-          alert(err);
         });
     }
   }

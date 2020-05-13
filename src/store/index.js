@@ -8,7 +8,8 @@ const store = new Vuex.Store({
   modules: { permission, user },
   getters: {
     roles: state => state.user.roles,
-    permission_routes: state => state.permission.routes
+    permission_routes: state => state.permission.routes,
+    token: state => state.user.token
   }
 });
 
