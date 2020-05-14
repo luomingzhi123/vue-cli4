@@ -8,13 +8,14 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: "/call",
+  publicPath: "/vueCli4",
+  outputDir: "dist/vueCli4",
   devServer: {
     port,
     open: true,
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://192.168.31.215:8001/`,
+        target: `http://localhost:3000`,
         changeOrigin: true,
         pathRewrite: {
           ["^" + process.env.VUE_APP_BASE_API]: ""
